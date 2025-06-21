@@ -1,0 +1,12 @@
+Script de Instalação do software SAX....
+
+-- Cuidado
+Cuidado ao executar o instalador, pois o APEX versão 5.0.3 será reinstalado,
+caso existam outras aplicações elas serão excluídas.
+
+-- Verifique os pré-requisitos
+
+-- 1) Banco de Dados Oracle XE Instalado
+-- 1.1) Mínimo de 1 GB de Memória livre
+-- 1.2) Mínimo de 10 GB de Espaço em disco.
+-- -----------------------------------------

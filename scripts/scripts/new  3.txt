@@ -1,0 +1,8 @@
+select *
+from ( select cargo, deptno
+       from colaborador )
+pivot
+(
+  count(deptno)
+  for deptno in (10 as dept_10, 20 as dept_20, 30 as dept_20)
+)

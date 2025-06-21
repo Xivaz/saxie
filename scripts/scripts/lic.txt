@@ -1,0 +1,17 @@
+-------------------------------------------------------------
+
+Contrato de Licença de Uso do Software nº 1/2017
+
+-------------------------------------------------------------
+Data de Vigência: de 20/03/2017 a 19/03/2018
+Cliente: Associação Cultural PauloVI CNPJ: 02.222.512/0001-28
+-------------------------------------------------------------
+   
+   Este contrato de Licença de Uso de Software foi firmado entre 
+Faculdades Paulo VI, e Silas Silva, consultor em Desenvolvimento
+de Sistemas, para desenvolvimento, manutenção e uso do sistema 
+SAX - Software Academico eXpresso.
+   O sistema é hospedado por: Drawer host no modelo de VPS (Virtual Private Server) 
+através do endereço eletronico silao.com.br:8080/apex
+
+--------------------------------------------------------------

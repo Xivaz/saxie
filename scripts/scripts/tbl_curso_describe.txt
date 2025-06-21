@@ -1,0 +1,27 @@
+SQL> desc tbl_curso;
+ Nome                                      Nulo?    Tipo
+ ----------------------------------------- -------- ----------------------------
+ CUR_IN_ID                                 NOT NULL NUMBER(38)
+ INST_IN_ID                                NOT NULL NUMBER(38)
+ CUR_IN_EMEC                                        NUMBER(12)
+ CUR_IN_SITUACAO                                    NUMBER(38)
+ CUR_IN_REPRESENTADO                                NUMBER(38)
+ CUR_IN_CODIGO_REPRESENTA                           NUMBER(12)
+ CUR_ST_NOME                               NOT NULL VARCHAR2(60)
+ CUR_ST_HABILITACAO                                 VARCHAR2(60)
+ CUR_ST_PORTARIA                                    VARCHAR2(60)
+ CUR_ST_AUTORIZACAO_MEC                             VARCHAR2(60)
+ CUR_DT_AUTORIZACAO                                 DATE
+ USER_ST_ATUALIZA                          NOT NULL VARCHAR2(30)
+ USER_DT_ATUALIZA                          NOT NULL DATE
+ CUR_IN_PERIODICIDADE                               NUMBER(38)
+ CUR_DT_PUBLICA_DOU                                 DATE
+ CUR_IN_MODALIDADE                                  NUMBER(38)
+ CUR_IN_GRAU                               NOT NULL NUMBER(38)
+ CUR_IN_INST_CONVENIO                               NUMBER(38)
+ CUR_IN_COND_PESSDEF                                NUMBER(38)
+ MOTIVO_NAOALUVINC_ANOANT                           VARCHAR2(4000)
+ CUR_IN_DISC_SEMIPRESENCIAL                         NUMBER(38)
+ CUR_NU_PCTL_CHSEMIPRESENCIAL                       NUMBER(5,2)
+
+SQL> spool off;

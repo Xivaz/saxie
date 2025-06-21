@@ -1,0 +1,104 @@
+select lpad(to_char(x.mes),2,'0') as "MES"
+     , mod(:p_ano , 4) as "ANOBISSEXTO"
+     , to_number(to_char(to_date('01'||lpad(to_char(x.mes),2,'0')||to_char(2017),'DDMMYYYY'),'D')) "DIA_DA_SEMANA"
+     , CASE to_number(to_char(to_date('01'||lpad(to_char(x.mes),2,'0')||to_char(2017),'DDMMYYYY'),'D'))
+       WHEN 1 THEN '"01","02","03","04","05","06","07"' 
+       WHEN 2 THEN '"","01","02","03","04","05","06"' 
+       WHEN 3 THEN '"","","01","02","03","04","05"' 
+       WHEN 4 THEN '"","","","01","02","03","04"' 
+       WHEN 5 THEN '"","","","","01","02","03"' 
+       WHEN 6 THEN '"","","","","","01","02"' 
+       WHEN 7 THEN '"","","","","","","01"'
+       ELSE '"","","","","","",""' 
+       END
+       AS "SEMANA1"
+     , CASE to_number(to_char(to_date('01'||lpad(to_char(x.mes),2,'0')||to_char(2017),'DDMMYYYY'),'D'))
+       WHEN 1 THEN '"08","09","10","11","12","13","14"' 
+       WHEN 2 THEN '"07","08","09","10","11","12","13"' 
+       WHEN 3 THEN '"06","07","08","09","10","11","12"' 
+       WHEN 4 THEN '"05","06","07","08","09","10","11"' 
+       WHEN 5 THEN '"04","05","06","07","08","09","10"' 
+       WHEN 6 THEN '"03","04","05","06","07","08","09"' 
+       WHEN 7 THEN '"02","03","04","05","06","07","08"' 
+       ELSE '"","","","","","",""' 
+       END
+       AS "SEMANA2"
+     , CASE to_number(to_char(to_date('01'||lpad(to_char(x.mes),2,'0')||to_char(2017),'DDMMYYYY'),'D'))
+       WHEN 1 THEN '"15","16","17","18","19","20","21"' 
+       WHEN 2 THEN '"14","15","16","17","18","19","20"' 
+       WHEN 3 THEN '"13","14","15","16","17","18","19"' 
+       WHEN 4 THEN '"12","13","14","15","16","17","18"' 
+       WHEN 5 THEN '"11","12","13","14","15","16","17"' 
+       WHEN 6 THEN '"10","11","12","13","14","15","16"'
+       WHEN 7 THEN '"09","10","11","12","13","14","15"' 
+       ELSE '"","","","","","",""' 
+       END
+       AS "SEMANA3"
+     , CASE to_number(to_char(to_date('01'||lpad(to_char(x.mes),2,'0')||to_char(2017),'DDMMYYYY'),'D'))
+       WHEN 1 THEN '"22","23","24","25","26","27","28"' 
+       WHEN 2 THEN '"21","22","23","24","25","26","27"' 
+       WHEN 3 THEN '"20","21","22","23","24","25","26"' 
+       WHEN 4 THEN '"19","20","21","22","23","24","25"' 
+       WHEN 5 THEN '"18","19","20","21","22","23","24"' 
+       WHEN 6 THEN '"17","18","19","20","21","22","23"'
+       WHEN 7 THEN '"16","17","18","19","20","21","22"' 
+       ELSE '"","","","","","",""' 
+       END
+       AS "SEMANA4"
+     , CASE x.mes
+       WHEN 2 THEN CASE mod(:p_ano , 4) 
+                   WHEN 0 THEN CASE to_number(to_char(to_date('01'||lpad(to_char(x.mes),2,'0')||to_char(2017),'DDMMYYYY'),'D'))
+                               WHEN 1 THEN '"29","","","","","",""' 
+                               WHEN 2 THEN '"28","29","","","","",""'
+                               WHEN 3 THEN '"27","28","29","","","",""'
+                               WHEN 4 THEN '"26","27","28","29","","",""'
+                               WHEN 5 THEN '"25","26","27","28","29","",""'
+                               WHEN 6 THEN '"24","25","26","27","28","29",""'
+                               WHEN 7 THEN '"23","24","25","26","27","28","29"'
+                               ELSE '"","","","","","",""'
+                               END
+                   ELSE
+                               WHEN 1 THEN '"","","","","","",""' 
+                               WHEN 2 THEN '"28","","","","","",""'
+                               WHEN 3 THEN '"27","28","","","","",""'
+                               WHEN 4 THEN '"26","27","28","","","",""'
+                               WHEN 5 THEN '"25","26","27","28","","",""'
+                               WHEN 6 THEN '"24","25","26","27","28","",""'
+                               WHEN 7 THEN '"23","24","25","26","27","28",""'
+                               ELSE '"","","","","","",""'
+                               END
+                   END
+       WHEN IN (3,5,7,8,10,12) THEN CASE to_number(to_char(to_date('01'||lpad(to_char(x.mes),2,'0')||to_char(2017),'DDMMYYYY'),'D'))
+                               WHEN 1 THEN '"29","30","31","","","",""' 
+                               WHEN 2 THEN '"28","29","30","31","","",""'
+                               WHEN 3 THEN '"27","28","29","30","31","",""'
+                               WHEN 4 THEN '"26","27","28","29","30","31",""'
+                               WHEN 5 THEN '"25","26","27","28","29","30","31"'
+                               WHEN 6 THEN '"24","25","26","27","28","29","30"'
+                               WHEN 7 THEN '"23","24","25","26","27","28","29"'
+                               ELSE '"","","","","","",""'
+                               END
+       ELSE                    CASE to_number(to_char(to_date('01'||lpad(to_char(x.mes),2,'0')||to_char(2017),'DDMMYYYY'),'D'))
+                               WHEN 1 THEN '"29","30","","","","",""' 
+                               WHEN 2 THEN '"28","29","30","","","",""'
+                               WHEN 3 THEN '"27","28","29","30","","",""'
+                               WHEN 4 THEN '"26","27","28","29","30","",""'
+                               WHEN 5 THEN '"25","26","27","28","29","30",""'
+                               WHEN 6 THEN '"24","25","26","27","28","29","30"'
+                               WHEN 7 THEN '"23","24","25","26","27","28","29"'
+                               ELSE '"","","","","","",""'
+                               END
+       END
+       AS "SEMANA5"
+     , CASE x.mes
+       WHEN IN (3,5,7,8,10,12) THEN CASE to_number(to_char(to_date('01'||lpad(to_char(x.mes),2,'0')||to_char(2017),'DDMMYYYY'),'D'))
+                                 WHEN 6 THEN '"31","","","","","",""'
+                                 WHEN 7 THEN '"30","31","","","","",""'
+                                 ELSE '"","","","","","",""' 
+       ELSE '"","","","","","",""'
+       END
+       AS "SEMANA6"
+
+  from (select level as mes 
+          from dual connect by level <= 12) x
+                  order by 1

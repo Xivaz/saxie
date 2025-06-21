@@ -1,0 +1,7 @@
+<button class="a-Button a-Button--hot a-Button--iconTextButton" 
+        onclick="javascript:apex.navigation.dialog('f?p=4000:271:7499647979678::NO:271::\u0026p_dialog_cs=fymgZZMzKrrIs_MiWJlx7SL5vms',{title:'Upload Static Application File',height:'480',width:'800',maxWidth:'1200',modal:true,dialog:null},'a-Dialog--wizard',$('#B61586311331473472'));" 
+		type="button" 
+		id="B61586311331473472">Upload File
+		<span class="a-Icon icon-right-chevron">
+		</span>
+		</button>

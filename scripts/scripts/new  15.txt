@@ -1,0 +1,42 @@
+procedure importa_arquivo (p_censo_st_nomearquivo in varchar2,
+                          p_censo_in_anorefe     in number) is
+  w_user_st_atualiza     varchar2(30);
+  w_user_dt_atualiza     date;
+  w_anex_in_id           integer;
+  W_BLOB_CONTENT         BLOB;
+  W_NAME                 APEX_APPLICATION_TEMP_FILES.NAME%TYPE;
+  W_FILENAME             APEX_APPLICATION_TEMP_FILES.FILENAME%TYPE;
+  W_MIME_TYPE            APEX_APPLICATION_TEMP_FILES.MIME_TYPE%TYPE;
+  W_TAMANHO              NUMBER;
+  W_SQLERRM              VARCHAR2(2000);
+  CURSOR C_CONTENT IS
+  SELECT BLOB_CONTENT, NAME, FILENAME, MIME_TYPE, DBMS_LOB.GETLENGTH(BLOB_CONTENT) TAMANHO 
+    FROM APEX_APPLICATION_TEMP_FILES
+   WHERE NAME = p_censo_st_nomearquivo
+begin
+  pc_atualiza_usuario(w_user_st_atualiza, w_user_dt_atualiza);
+  FOR CL IN C_CONTENT LOOP  
+      select sq_censo_arquivo.nextval into w_anex_in_id from dual;
+      
+      BEGIN   
+          insert into tbl_censo_arquivo(censo_in_id, 
+                        censo_st_nomearquivo,
+						censo_in_anorefe,
+                        censo_cl_conteudo,
+                        censo_st_mime_type,
+						censo_st_charset,
+                        censo_nu_tamanho,
+                        user_st_atualiza,
+                        user_dt_atualiza)
+               values  (w_anex_in_id,
+                        CL.NAME,
+						p_censo_in_anorefe,
+                        CL.FILENAME,
+                        CL.BLOB_CONTENT,
+                        CL.MIME_TYPE,
+                        CL.TAMANHO,
+                        W_USER_ST_ATUALIZA,
+                        W_USER_DT_ATUALIZA);
+       END;
+   END LOOP;
+end;

@@ -1,0 +1,1 @@
+http://apex.oracle.com/pls/apex/f?p=AppId:PageId:Session:Request:Debug:ClearCache:Params:ParamValues:PrinterFriendly
