@@ -28,13 +28,7 @@ CREATE TABLE TBL_Instituicao
 	user_st_atualiza    VARCHAR2(30) NOT NULL,
 	user_dt_atualiza    DATE
   ) 
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
   
 COMMENT ON COLUMN tbl_instituicao.inst_in_id
 IS
@@ -93,13 +87,7 @@ CREATE TABLE TBL_aluno
 	alu_in_escolaridade   INTEGER NOT NULL,
 	user_st_atualiza      VARCHAR2(30) NOT NULL,
 	user_dt_atualiza      DATE  NOT NULL) 
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 COMMENT ON COLUMN TBL_ALUNO.alu_st_nome_censo
 IS
@@ -178,13 +166,7 @@ CREATE TABLE TBL_ALUNO_CURSO
     user_dt_atualiza DATE NOT NULL,
 	user_st_atualiza VARCHAR2(30) NOT NULL
    ) 
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 ALTER TABLE TBL_ALUNO_CURSO ADD CONSTRAINT PK_ACUR_IN_ID PRIMARY KEY (ACUR_IN_ID)
 USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -208,13 +190,7 @@ CREATE TABLE TBL_ALUNO_CURSO_HISTORICO
 	user_st_atualiza          VARCHAR2(30) NOT NULL,
 	user_dt_atualiza          DATE  NOT NULL
    ) 
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
   
 COMMENT ON COLUMN TBL_ALUNO_CURSO_HISTORICO.achis_in_id IS 'Identificador Único da linha do histórico do aluno' ;
 COMMENT ON COLUMN TBL_ALUNO_CURSO_HISTORICO.disc_in_id   IS 'Id da Disciplina' ;
@@ -245,13 +221,7 @@ CREATE TABLE TBL_calendario
 	user_st_atualiza         VARCHAR2(30) NOT NULL,
 	user_dt_atualiza         DATE  NOT NULL
   ) 
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 ALTER TABLE TBL_calendario ADD CONSTRAINT tbl_calendario_PK PRIMARY KEY ( cale_in_ano, cale_in_id ) 
 USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
@@ -277,13 +247,7 @@ CREATE TABLE TBL_curso
 	user_st_atualiza         VARCHAR2(30) NOT NULL,
 	user_dt_atualiza         DATE  NOT NULL
     ) 
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 COMMENT ON COLUMN tbl_curso.cur_in_emec
 IS
@@ -315,13 +279,7 @@ CREATE TABLE TBL_curso_turno
 	user_st_atualiza         VARCHAR2(30) NOT NULL,
 	user_dt_atualiza         DATE  NOT NULL 
     ) 
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 COMMENT ON COLUMN tbl_curso_turno.in_vaga_nova
 IS
@@ -360,13 +318,7 @@ CREATE TABLE TBL_disciplina
 	user_st_atualiza         VARCHAR2(30) NOT NULL,
 	user_dt_atualiza         DATE  NOT NULL
   ) 
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 COMMENT ON COLUMN TBL_DISCIPLINA.disc_in_id
 IS
@@ -384,9 +336,7 @@ IS
 IS
   'Tipo da Disciplina (Referência).' ;
 ALTER TABLE TBL_DISCIPLINA ADD CONSTRAINT disciplina_PK PRIMARY KEY ( disc_in_id ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 
 
@@ -402,17 +352,9 @@ CREATE TABLE TBL_DISCIPLINA_prereq
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 ALTER TABLE TBL_disciplina_PREREQ ADD CONSTRAINT discPREREQ_PK PRIMARY KEY ( dpre_in_id ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 
 CREATE TABLE TBL_docente
@@ -446,13 +388,7 @@ CREATE TABLE TBL_docente
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 COMMENT ON COLUMN tbl_docente.doce_dt_nascimento
 IS
@@ -492,8 +428,6 @@ IS
   'Docente Substituo 1=Sim 0=Não' ;
   
 ALTER TABLE TBL_docente ADD CONSTRAINT docente_PK PRIMARY KEY ( doce_in_id ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
 / 
 
 
@@ -508,23 +442,13 @@ CREATE TABLE TBL_docente_curso
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 ALTER TABLE TBL_docente_curso ADD CONSTRAINT PK_DCUR_IN_ID PRIMARY KEY ( Dcur_in_id ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
 / 
 
 ALTER TABLE TBL_docente_curso ADD CONSTRAINT UK_DCUR_DOCE_CUR UNIQUE ( DOCE_IN_ID, cur_in_id ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 
 CREATE TABLE TBL_docente_disciplina
@@ -538,24 +462,14 @@ CREATE TABLE TBL_docente_disciplina
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 
   ALTER TABLE TBL_docente_disciplina ADD CONSTRAINT PK_DDISC_IN_ID PRIMARY KEY ( DDISC_IN_ID ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
   ALTER TABLE TBL_docente_disciplina ADD CONSTRAINT UK_DOCE_DISC UNIQUE ( doce_in_id, disc_in_id ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 
 CREATE TABLE TBL_GRADE
@@ -570,18 +484,10 @@ CREATE TABLE TBL_GRADE
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 ALTER TABLE TBL_GRADE ADD CONSTRAINT PK_GRADE PRIMARY KEY ( GRD_IN_ID ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 
 CREATE TABLE TBL_historico_afastamento
@@ -597,13 +503,7 @@ CREATE TABLE TBL_historico_afastamento
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 COMMENT ON COLUMN tbl_historico_afastamento.hafas_dt_fim
 IS
@@ -612,9 +512,7 @@ IS
 IS
   'Justificativa para o afastamento.' ;
 ALTER TABLE TBL_historico_afastamento ADD CONSTRAINT historico_afastamento_PK PRIMARY KEY ( hafas_in_id ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 
 CREATE TABLE TBL_municipio
@@ -628,18 +526,10 @@ CREATE TABLE TBL_municipio
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 ALTER TABLE TBL_municipio ADD CONSTRAINT municipio_PK PRIMARY KEY ( muni_in_codigo_censo ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 
 CREATE TABLE TBL_pais
@@ -653,21 +543,13 @@ CREATE TABLE TBL_pais
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 COMMENT ON COLUMN tbl_pais.pais_st_codigo_censo
 IS
   'Código do País no CENSO' ;
 ALTER TABLE TBL_pais ADD CONSTRAINT pais_PK PRIMARY KEY ( pais_in_id ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 
 CREATE TABLE TBL_periodo
@@ -683,13 +565,7 @@ CREATE TABLE TBL_periodo
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 COMMENT ON COLUMN tbl_periodo.peri_in_id
 IS
@@ -698,9 +574,7 @@ IS
 IS
   '1 ) Dia 2 ) Semana 3 ) Quinzena 4 ) Mes 5 ) Bimestre 6 ) Trimestre 7 ) Semestre 8 ) Ano' ;
 ALTER TABLE TBL_periodo ADD CONSTRAINT periodo_PK PRIMARY KEY ( peri_in_id ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 
 CREATE TABLE TBL_referencia
@@ -715,13 +589,7 @@ CREATE TABLE TBL_referencia
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 COMMENT ON COLUMN tbl_referencia.refe_in_id
 IS
@@ -741,9 +609,7 @@ IS
 
   
 ALTER TABLE TBL_referencia ADD CONSTRAINT referencia_PK PRIMARY KEY ( refe_in_id ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 
 
@@ -762,9 +628,7 @@ COMMENT ON COLUMN TBL_TURMA.tur_in_id
 IS
   'Identificador Único do Turno.' ;
 ALTER TABLE TBL_turma ADD CONSTRAINT turma_PK PRIMARY KEY ( tur_in_id ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 
 CREATE TABLE TBL_turno
@@ -778,13 +642,7 @@ CREATE TABLE TBL_turno
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 COMMENT ON COLUMN TBL_TURNO.turn_st_descricao
 IS
@@ -793,9 +651,7 @@ IS
 IS
   'Modalidade 1 = Presencial, 2 = a Distância.' ;
 ALTER TABLE TBL_turno ADD CONSTRAINT turno_PK PRIMARY KEY ( turn_in_id ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 
 CREATE TABLE TBL_ANEXO
@@ -819,9 +675,7 @@ CREATE TABLE TBL_ANEXO
   );
   
 ALTER TABLE TBL_ANEXO ADD CONSTRAINT PK_ANEX PRIMARY KEY (ANEX_IN_ID)
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
   
 CREATE TABLE TBL_ALUNO_ANEXO
@@ -832,13 +686,7 @@ CREATE TABLE TBL_ALUNO_ANEXO
   pctfree 10
   initrans 1
   maxtrans 255 
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 CREATE TABLE TBL_DOCENTE_ANEXO
   ( DOCE_IN_ID INTEGER,
@@ -848,13 +696,7 @@ CREATE TABLE TBL_DOCENTE_ANEXO
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 CREATE TABLE TBL_DISCIPLINA_ANEXO
   ( DISC_IN_ID INTEGER,
@@ -864,13 +706,7 @@ CREATE TABLE TBL_DISCIPLINA_ANEXO
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
   CREATE TABLE TBL_uf
   (
@@ -884,21 +720,13 @@ CREATE TABLE TBL_DISCIPLINA_ANEXO
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 COMMENT ON COLUMN TBL_uf.uf_st_nome
 IS
   'Nome da Unidade da Federação (UF).' ;
 ALTER TABLE TBL_uf ADD CONSTRAINT uf_PK PRIMARY KEY ( uf_in_codigo_censo ) 
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-/ 
+ / 
 
 /*  
   ALTER TABLE TBL_ALUNO_ANEXO DROP CONSTRAINT FK_ALUNO_ANEXO_ANEXO;
@@ -915,9 +743,7 @@ ALTER TABLE TBL_DISCIPLINA_ANEXO ADD CONSTRAINT FK_DISCIPLINA_ANEXO_ANEXO      F
 ALTER TABLE TBL_DISCIPLINA_ANEXO ADD CONSTRAINT FK_DISCIPLINA_ANEXO_DISCIPLINA FOREIGN KEY (DISC_IN_ID) REFERENCES TBL_DISCIPLINA on delete cascade;
 
 ALTER TABLE TBL_INSTITUICAO ADD CONSTRAINT UK_CODIGO_IES UNIQUE (INST_IN_CODIGO_IES)
-USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
-STORAGE (INITIAL 512K NEXT 512K MINEXTENTS 1 MAXEXTENTS 505 PCTINCREASE 0 FREELISTS 6 FREELIST GROUPS 2 BUFFER_POOL DEFAULT) 
-TABLESPACE "TS_INDX" 
+ TABLESPACE "TS_INDX" 
 ENABLE;
 
 ALTER TABLE TBL_turma ADD CONSTRAINT fk_turma_periodo FOREIGN KEY ( peri_in_id ) REFERENCES TBL_periodo ( peri_in_id ) ;
@@ -1795,13 +1621,7 @@ CREATE TABLE TBL_CURRICULO
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 
   CREATE TABLE TBL_FERIADO
@@ -1816,13 +1636,7 @@ CREATE TABLE TBL_CURRICULO
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 CREATE TABLE TBL_HORARIO_SEMANA
   (
@@ -1839,13 +1653,7 @@ CREATE TABLE TBL_HORARIO_SEMANA
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 ALTER TABLE TBL_HORARIO_SEMANA
   ADD CONSTRAINT PK_HOSE 
@@ -1876,13 +1684,7 @@ CREATE TABLE TBL_TURNO_AULA
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
   CREATE SEQUENCE SQ_TURNO_AULA START WITH 1 NOCACHE ORDER;
   
@@ -1966,13 +1768,7 @@ CREATE TABLE TBL_MATRICULA
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
   CREATE SEQUENCE SQ_MATRICULA START WITH 1 NOCACHE ORDER;
   
@@ -2000,13 +1796,7 @@ CREATE TABLE TBL_TURMA_DISCIPLINA_OPTATIVA
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 CREATE SEQUENCE SQ_TURMA_DISCIPLINA_OPTATIVA START WITH 1 NOCACHE ORDER;
   
@@ -2042,13 +1832,7 @@ CREATE TABLE TBL_FORMULA_MEDIA
   pctfree 10
   initrans 1
   maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+/
 
 COMMENT ON TABLE TBL_FORMULA_MEDIA IS 'TABELA DE REGRAS DE CALCULOS DAS MÉDIAS';
 COMMENT ON COLUMN TBL_FORMULA_MEDIA.FMED_IN_ID IS 'Identificador Único da Fórmula de cálculo das médias';
